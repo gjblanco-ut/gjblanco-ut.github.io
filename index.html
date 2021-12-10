@@ -10,10 +10,16 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>.add-margin{margin-top: 25px; margin-bottom: 25px;}
+        .text-white-80 {
+  --bs-text-opacity: 1;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+        </style>
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#!">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -25,20 +31,21 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
         <!-- Header - set the background image for the header in the line below-->
-        <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+        <header class="py-5 bg-image-full" style="background-image: url('./img/space.jfif')">
             <div class="text-center my-5">
-                <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+                <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." style="opacity:0"/>
                 <h1 class="text-white fs-3 fw-bolder">Classifying Signals of A Cherenkov Telescope</h1>
-                <div class="col-sm-1">
-                    <p class="text-white-50 mb-0">Samantha Albert</p>
-                    <p class="text-white-50 mb-0">Guillermo Blanco</p>
-                    <p class="text-white-50 mb-0">RT Frank</p>
-                    <p class="text-white-50 mb-0">Emily Le</p>
-                    <p class="text-white-50 mb-0">Timothy Tran</p>
+                <div class="row justify-content-center"></div>
+                <div class="col-sm-12">
+                    <p class="text-white-80 mb-0">Samantha Albert</p>
+                    <p class="text-white-80 mb-0">Guillermo Blanco</p>
+                    <p class="text-white-80 mb-0">RT Frank</p>
+                    <p class="text-white-80 mb-0">Emily Le</p>
+                    <p class="text-white-80 mb-0">Timothy Tran</p>
                 </div>
-                
+                </div>
             </div>
         </header>
         <!-- Content section-->
@@ -73,49 +80,403 @@
                                  and changing the “g” to 0 and “h” to 1 in the class column with g meaning gamma and h meaning hadron.
                         </p>
                     </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/pie-data.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.1 Data distribution</figcaption>
+                          </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">The 10 features of the dataset include length, width, size, concentration, concentration 1, asymmetry, M3long, M3trans, Alpha, and Distribution. The target of the dataset focuses on the class which include gamma ray signals which have bursts that are extremely short lived and hadrons, which for our analysis, are classified as background signals. Cherenkov telescope arrays are ground based and are pointed towards the sky. The data is received as an ellipsoid with the major axis centered on the focal point of the mirror array. The length is the major axis of the ellipse and the width is parallel to the film plane of the receivers. The way the data is interpreted is by a series of three images called moments, with size being the first moment, movement being the second moment, and temperature being the third moment. The size is a log-transformed value of how big large the burst was. Concentration and Concentration 1 are finding a point of the highest intensity within the burst. Asymmetry is the distance from the center of the ellipsoid to the point of the highest intensity. M3Long and M3Trans are the cube root of the transformed data temperature. Alpha is the angular distance from the point of right ascension, which is a fixed point in the night sky. The distance feature is the distance from the event origin. Lastly, the target variable, ‘class’, is denoted with a “g” for gamma signals and “h” for hadrons.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Exploratory Analysis</h2>
+                        <p class="lead add-margin">Pearson’s Correlation Matrix</p>
+                        <p class="mb-0">Looking at our correlation matrix, we see both strong positive and negative correlations. The strongest positive correlation is between “Conc” and “Conc1”, however, this is to be expected. Both of these values are ratios of the intensity and size of each recorded entry with slightly different calculations. Our hypotheses are most interested in the positive correlations between length and width of the burst.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/corr-mat.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.2 Correlation Matrix</figcaption>
+                          </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">The 10 features of the dataset include length, width, size, concentration, concentration 1, asymmetry, M3long, M3trans, Alpha, and Distribution. The target of the dataset focuses on the class which include gamma ray signals which have bursts that are extremely short lived and hadrons, which for our analysis, are classified as background signals. Cherenkov telescope arrays are ground based and are pointed towards the sky. The data is received as an ellipsoid with the major axis centered on the focal point of the mirror array. The length is the major axis of the ellipse and the width is parallel to the film plane of the receivers. The way the data is interpreted is by a series of three images called moments, with size being the first moment, movement being the second moment, and temperature being the third moment. The size is a log-transformed value of how big large the burst was. Concentration and Concentration 1 are finding a point of the highest intensity within the burst. Asymmetry is the distance from the center of the ellipsoid to the point of the highest intensity. M3Long and M3Trans are the cube root of the transformed data temperature. Alpha is the angular distance from the point of right ascension, which is a fixed point in the night sky. The distance feature is the distance from the event origin. Lastly, the target variable, ‘class’, is denoted with a “g” for gamma signals and “h” for hadrons.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="lead add-margin">Pairwise plots</p>
+                        <p class="mb-0">For pairwise plots, we observed lots of funneling and non-linear relationships between our variables. The clear linear relationship between the “Conc”, “Conc1” and “Size” are even more apparent, and are very clearly linear. As we mentioned before, the “Conc” variables are both ratios that are calculated based on the highest intensity and the size of the burst, hence their strong relationship.
+                            </p>
+                            <p class="mb-0">
+                            We see the same strong correlation between the size, length and width of the data points in a mostly linear relation.
+                            </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/rice.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.3 Pairwise plots</figcaption>
+                          </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="lead add-margin">Histograms</p>
+                        <p class="mb-0">In conducting exploratory analysis here, we clearly see why there are so many transformations already applied to the data. There is heavy skewing present in many of the variables. What variables that are normalized are more evenly distributed, albeit some are extremely centered.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/hist.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.4 Histograms</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="lead add-margin">Scatterplots</p>
+                        <p class="mb-0">The dataset was shuffled and assigned an ID, then using the scatterplots, we compared the class to all the features of the data. We can observe that all the variables were not linearly separable, so we were not able to create a line separating the colored points.This can be seen by the overlap of points. 
+                        </p> 
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/51.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/52.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/53.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/54.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/55.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/56.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/57.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/58.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-2 add-margin">
+                        <img src="./img/59.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-2 add-margin">
+                        <figure class="figure">
+                            <img src="./img/5a.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.5 Scatterplots</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="lead add-margin">Hypotheses</p>
+                        <ol class="mb-0">
+                            <li>
+                                Length, width, and alpha seem to be the most correlated with class.
+                                </li>
+                            <li>
+                                Most gamma points overlap with hadron points, but not necessarily the reverse, so there will likely be confusion in the k-Nearest Neighbors model.
+                            </li>
+                            <li>
+                                Through SHAP analysis, each model should show the same most-weighted factors.
+
+                            </li>  
+                        </p> 
+                    </div>
+                    <div class="row add-margin"></div>
+
+                    <div class="col-lg-6 add-margin">
+                        <h2>Modeling</h2>
+                        <p class="lead add-margin">K-Nearest Neighbors</p>
+                        <p class="mb-0">Before deciding the number of groups to use, we ran an exploratory analysis of the model to test the optimal number of groups. We tried lower group numbers, and found that, while more accurate in predictions for the test set, the scoring suffered for the testing data. We settled on 8 total groups, it had high scores in both training and testing, with a minimal distance between the two. The accuracy score overall with 8 groups was 80.415. Below is the confusion matrix for this model.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="./img/knn-conf.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.6 kNN Confusion Matrix</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            We found that, for the manner in which our data was presented, KNN is a good fit for the style of modeling. We had a large data set, but a small number of features and a binary state of classification. Ultimately, for the simplicity of KNN, it works best for exploratory analysis such as ours. It quickly identifies the target groups, but does not do a great job of providing deep analysis.
+                        </p>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            For our Shapley analyses, we realized that the SHAP package is very resource-intensive and would take an extremely long time to run for our full dataset of over 19,000 entries. Thus we decided to run the analyses on just samples of the data for each of the models. First we ran three analyses on samples of n=120 using different random states to see how much the analysis outcome was affected by which random state was used. Below are the results. Class 0 indicates hadron and class 1 indicates gamma. The number in parentheses indicates the random state used for that sample n.
+                        </p>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="./img/knn-shap-1.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.7 Accuracy Score for n(15)=0.7292</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="./img/knn-shap-2.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.8 Accuracy Score for n(66)=0.6667</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="./img/knn-shap-3.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.9 Accuracy Score for n(73)=0.5417</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            When conducting a Shapley analysis on our KNN model for our final model, we used a sample of n(9) = 500.
+                        </p>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="./img/knn-shap-4.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.10</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Our sample had an accuracy score of 73: with the alpha and distance values having the highest importance in our model.
+                        </p>  
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="lead add-margin">Neural Network</p>
+                        <p class="mb-0">We used a neural network with three hidden layers, of sizes 8, 6 and 5. Half of the data was randomly chosen for the neural network’s training, and the other half to evaluate its performance. We capped the number of iterations during the training phase at 5000. Experiments showed that increasing the number of iterations during the training did not increase the neural network’s performance significantly. 
+                        </p>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">Overall, our neural network model achieved an accuracy score of 0.87. The confusion matrix is shown below:   
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/nn-conf.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.11 NN Confusion Matrix</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">The SHAP analysis revealed that the feature with the greatest impact on the model output was the alpha value, which is in accordance with the results obtained with other models. Other features such as size and width also had a significant effect on the model output. The SHAP diagram we obtained is:
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/nn-shap1.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.12 NN SHAP scores</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">And the corresponding force diagram is the following:</p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/nn-shap2.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.13 NN SHAP force diagram</figcaption>
+                        </figure>
+                        
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="lead add-margin">Decision Tree</p>
+                        <p class="mb-0">
+                            For our Decision Tree model, we didn’t specify a maximum depth so that the model could go until gini=0 (i.e. perfect classification). Using the entire dataset, the Decision Tree returned a model of accuracy score 80.54, very similar to the score from our KNN model. Below is the confusion matrix for the Decision Tree classifier.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/dt-conf.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.14 Decision Tree Confusion Matrix</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            As one can see from the confusion matrices, our Decision Tree model was more accurate than our KNN model, but less accurate than our Neural Network.
+
+                        </p>
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            We then ran a SHAP analysis on the same n=500 sample that we used for our KNN model and Neural Network. The results are shown below. Again, alpha has the highest impact on model output, but was followed by length and size instead of distance and asym (KNN) or size and width (Neural Network). Running our Decision Tree classifier on just the sample returned an accuracy score of 73.2, which is virtually equal to the accuracy score returned by the sample using KNN.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <figure class="figure add-margin">
+                            <img src="./img/dt-shap-1.png" class="img-fluid" alt="Responsive image">
+                            <figcaption class="figure-caption text-center">Fig.15 Decision Tree SHAP Values</figcaption>
+                        </figure>
+                        
+                    </div>
+                    <div class="row add-margin"></div>
+
+
+                    <div class="col-lg-6 add-margin">
+                        <h2>Discussion</h2>
+                        <p class="mb-0">As previously mentioned, our neural network achieved an accuracy score of 0.87. Similarly to our other models, the features that had a greater influence on the neural network’s output were the alpha value, size and width.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Previously we had achieved a slightly worse performance of 0.84 by using a network composed of three hidden layers of sizes 20, 40 and 20. However, after  following the empirically validated practices described in this link, we found out that using an even smaller number of nodes speeds up the training of the network and improves its performance.     
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            A potential limitation of this model is that the neural network’s size and the number of layers might not be optimal. Similar to how we found an improvement on our previous model by following the advice mentioned above, it is possible that choosing another network topology might lead to further performance enhancements. More testing is required to assess whether the selected structure is close enough to optimality for this particular problem. 
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Another potential limitation that might affect this model’s accuracy is that our data is unbalanced: out of 19020 records, 12332 (around 65%) were gamma. This imbalance could potentially introduce some biases into our model.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Some limitations include that the dataset was all synthetic, created by the Monte Carlo simulation, therefore it may not be applicable for scientific findings. Due to the dataset being synthetic, the amount of hadron events were underestimated, leading to skewed model testing and analysis. Another limitation is that SHAP analysis on the entire dataset would take too much time. However, as we saw with our KNN models, the random state that we use for our sample has a big effect on the SHAP outcome.
+                        </p>
+                    </div>
+                    <div class="row add-margin"></div>
+
+                    <div class="col-lg-6 add-margin">
+                        <h2>Conclusion</h2>
+                        <p class="mb-0">
+                            We found from our analysis that alpha was actually the most significant factor in determining model output, followed by either length, size, or distance, depending on the model. As we expected, there was some confusion in our K-Nearest Neighbors model regarding false hadron signal predictions. Lastly, we found that SHAP analysis outcomes were heavily impacted by which random state was chosen for the sample, but when the analyses ran on the same sample, there was agreement that alpha had the highest average impact for all three models.
+
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            For the future, the model would need to be further trained before using it for real world data. One of the largest hurdles to clear is preparing the models for higher rates of hadron noise. It is important to remember though the purpose of our model: simply sifting through and finding the gamma signals. Each identified instance would have to be examined or passed through and analyzed by another AI.
+
+                        </p>
+                    </div>
+                    <div class="row add-margin" ></div>
+                    <div class="col-lg-6 add-margin">
+                        <h2>Acknowledgements</h2>
+                        <p class="mb-0">
+                            Samantha did the Decision Tree classifier, along with its confusion matrix and SHAP analysis.
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Guillermo worked on the Neural Network model and the website. 
+                        </p>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Timothy worked on the background research, introduction(problem and motivation), along with running codes for the exploratory analysis for the dataset (Pairwise plots, Histograms, and Scatter Plots).
+                        </p>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            Emily worked on the data portion of the project as well as running the code for the correlation matrix in the exploratory analysis. 
+                        </p>
+                    </div>
+                    <div class="row"></div>
+                    <div class="col-lg-6">
+                        <p class="mb-0">
+                            RT helped to tidy data and did KNN model and the accompanying Shapley analysis.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </section>
         
-        <div class="py-5 bg-image-full" style="background-image: url('./img/pie-data.png')">
-            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
-            <div style="height: 20rem"></div>
-        </div>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+  
         
         <!-- Image element - set the background image for the header in the line below-->
         <div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/4ulffa6qoKA/1200x800')">
             <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
             <div style="height: 20rem"></div>
         </div>
-        <!-- Content section-->
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Engaging Background Images</h2>
-                        <p class="lead">The background images used in this template are sourced from Unsplash and are open source and free to use.</p>
-                        <p class="mb-0">I can't tell you how many people say they were turned off from science because of a science teacher that completely sucked out all the inspiration and enthusiasm they had for the course.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
-        </footer>
+        
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
